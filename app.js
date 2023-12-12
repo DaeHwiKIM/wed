@@ -3,6 +3,13 @@ const path = require("path");
 const app = express();
 const port = 3000;
 
+// doSomeCalculation 함수 정의
+function doSomeCalculation() {
+  // 여기에 계산 로직을 작성하세요.
+  // 이 예시에서는 단순히 10을 반환하도록 합니다.
+  return 10;
+}
+
 // 정적 파일을 제공하는 미들웨어
 app.use(express.static(path.join(__dirname, "public")));
 
