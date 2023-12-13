@@ -13,8 +13,8 @@ function doSomeCalculation() {
 // 정적 파일을 제공하는 미들웨어
 app.use(express.static(path.join(__dirname, "public")));
 
-// '/' 라우트 핸들러
-app.get("/", function (요청, 응답) {
+// '/calculation' 라우트 핸들러
+app.get("/calculation", function (요청, 응답) {
   let result = doSomeCalculation(); // doSomeCalculation은 개발자가 정의한 함수입니다.
   응답.send("Calculation result is " + result);
 });
