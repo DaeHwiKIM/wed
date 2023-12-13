@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Weather App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        padding: 20px;
+        color: #333;
+      }
+      h1,
+      h2 {
+        color: #446688;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      .box {
+        border: 1px solid #ddd;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <h2>도시 선택</h2>
+      <select id="citySelection" onchange="changeCity(this.value)">
+        <option value="서울">서울</option>
+        <option value="부산">부산</option>
+        <option value="인천">인천</option>
+        <option value="대구">대구</option>
+        <option value="대전">대전</option>
+        <option value="광주">광주</option>
+        <option value="수원">수원</option>
+      </select>
+    </div>
+
+    <div class="box" style="display: flex; justify-content: space-between">
+      <div>
+        <h1>지금 날씨는?</h1>
+        <p id="weather"></p>
+      </div>
+      <div style="border-left: 3px solid #446688; padding-left: 30px">
+        <h1>지금 뭐 입지?</h1>
+        <img id="outfit" src="" alt="Outfit recommendation" />
+      </div>
+    </div>
+
+    <div class="box">
+      <h2>오늘 주요 날씨</h2>
+      <ul id="forecast"></ul>
+    </div>
+
+    <div class="box">
+      <h2>내일까지의 3시간 주기 예보</h2>
+      <ul id="threeHourlyForecast"></ul>
+    </div>
+    <script src="weather.js"></script>
+    <script>
+      function changeCity(city) {
+        localStorage.setItem("selectedCity", city);
+        location.reload();
+      }
+
+      window.onload = function () {
+        var city = localStorage.getItem("selectedCity") || "서울";
+        document.getElementById("citySelection").value = city;
+        getSelectedCityWeather(city);
+      };
+    </script>
+  </body>
+</html>
